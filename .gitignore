@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+*.jsonl
+*.json
+romhacking_dataset/
+!tests/fixtures/*

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyromhacking"
+dynamic = ["version"]
+description = "Python scraper / API client for romhacking.net (RHDN: ROM hacks, translations, utilities, documents)"
+license = { text = "Apache-2.0" }
+authors = [{ name = "JarbasAi", email = "jarbasai@mailfence.com" }]
+requires-python = ">=3.8"
+dependencies = [
+    "requests",
+    "beautifulsoup4",
+    "unblock_requests",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/TigreGotico/pyromhacking"
+
+[project.scripts]
+pyromhacking-dataset = "pyromhacking.dataset:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "pyromhacking.version.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["pyromhacking*"]
+
+[tool.pytest.ini_options]
+markers = [
+    "live: hits romhacking.net over the network (needs FlareSolverr); deselect with -m 'not live'",
+]
