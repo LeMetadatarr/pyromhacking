@@ -17,7 +17,7 @@ Each row is the model's `.as_dict` plus an `xref` block — the flattened
 ## CLI
 
 ```bash
-export PYROMHACKING_FLARESOLVERR_URL=http://192.168.1.116:8191
+export PYROMHACKING_FLARESOLVERR_URL=http://localhost:8191
 
 # validate on a small sample first
 python -m pyromhacking.dataset hacks --out hacks.jsonl --limit 10 --delay 2
@@ -46,8 +46,8 @@ dataset.export_all("out_dir")
 ## Cost and politeness
 
 Every row costs one FlareSolverr-routed fetch (listing + detail). A full export
-of all four sections is tens of thousands of requests — treat it as a homelab
-job, raise the delay (`--delay`), and validate locally with `--limit` first.
+of all four sections is tens of thousands of requests — run it on a dedicated
+machine, raise the delay (`--delay`), and validate locally with `--limit` first.
 
 ## Provenance
 

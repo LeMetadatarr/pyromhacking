@@ -13,7 +13,7 @@ Cloudflare challenge page rather than entry data.
 
 Example::
 
-    export PYROMHACKING_FLARESOLVERR_URL=http://192.168.1.116:8191
+    export PYROMHACKING_FLARESOLVERR_URL=http://localhost:8191
 """
 from __future__ import annotations
 

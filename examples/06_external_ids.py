@@ -1,4 +1,4 @@
-"""Convert an entry to a metadatarr ``ExternalIds.extra`` dict.
+"""Convert an entry to a flat external-ID dict (namespaced ``romhacking_*`` keys).
 
     python examples/06_external_ids.py
 """

@@ -10,7 +10,7 @@ instance (``PYROMHACKING_FLARESOLVERR_URL``). See :mod:`pyromhacking.transport`.
 Quick start::
 
     import os
-    os.environ["PYROMHACKING_FLARESOLVERR_URL"] = "http://192.168.1.116:8191"
+    os.environ["PYROMHACKING_FLARESOLVERR_URL"] = "http://localhost:8191"
 
     from pyromhacking import get_hack, list_hacks
     hack = get_hack("1")

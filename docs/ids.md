@@ -1,7 +1,8 @@
 # Cross-reference ids
 
-`pyromhacking.ids` converts models into flat `ExternalIds.extra` dicts for the
-metadatarr pipeline, and parses entry references back out of URLs.
+`pyromhacking.ids` converts models into flat `str -> str` dicts of namespaced
+external IDs (canonical anchor key `<site>_id`) for cross-referencing entities
+across data sources, and parses entry references back out of URLs.
 
 ## Anchor
 

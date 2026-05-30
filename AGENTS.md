@@ -18,7 +18,7 @@ skeleton, so a single parser and a single listing module cover all four.
 | `pyromhacking/_parse.py` | BeautifulSoup parsing of detail + listing pages |
 | `pyromhacking/models.py` | typed dataclasses (`Hack`, `Translation`, ...) |
 | `pyromhacking/hacks.py` | listing enumeration + detail fetch (entity module) |
-| `pyromhacking/ids.py` | `ExternalIds.extra` converters; anchor + ref parsing |
+| `pyromhacking/ids.py` | flat external-ID dict converters; anchor + ref parsing |
 | `pyromhacking/dataset.py` | HF JSONL builders (4 configs, `export_jsonl`) |
 | `docs/` | per-topic documentation |
 | `examples/` | runnable scripts |
@@ -32,14 +32,14 @@ skeleton, so a single parser and a single listing module cover all four.
   `newsitem`/`topbar` skeleton for sidebar chrome, so the content entry is
   identified as the `newsitem` wrapping the `entryinfo` table — not the first one.
 - New fields go on the model **and** its `.as_dict`, the matching `*_to_extra`
-  converter, and `docs/models.md`.
+  converter in `ids.py`, and `docs/models.md`.
 - Be polite: respect the transport throttle; bulk crawls are homelab jobs.
 
 ## Testing
 
 ```bash
 pytest -m "not live"
-PYROMHACKING_FLARESOLVERR_URL=http://192.168.1.116:8191 pytest -m live
+PYROMHACKING_FLARESOLVERR_URL=http://localhost:8191 pytest -m live
 ```
 
 Offline fixtures live in `tests/fixtures/`. Re-capture them with the transport

@@ -15,7 +15,7 @@ FlareSolverr is **mandatory** for this client.
 
 | Environment variable | Meaning |
 | --- | --- |
-| `PYROMHACKING_FLARESOLVERR_URL` | FlareSolverr endpoint, e.g. `http://192.168.1.116:8191` |
+| `PYROMHACKING_FLARESOLVERR_URL` | FlareSolverr endpoint, e.g. `http://localhost:8191` |
 
 The transport uses `env_prefix="PYROMHACKING"`, so any other
 `unblock_requests` knobs are read from `PYROMHACKING_*` variables.

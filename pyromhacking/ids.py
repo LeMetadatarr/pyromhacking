@@ -1,4 +1,8 @@
-"""Converters from pyromhacking models to ``ExternalIds.extra`` dicts.
+"""Converters from pyromhacking models to flat ``str -> str`` external-ID dicts.
+
+Each converter returns a flat ``str -> str`` dict of namespaced external IDs
+(canonical anchor key ``<site>_id``) for cross-referencing entities across data
+sources.
 
 The canonical anchor is the pair (``romhacking_section``, ``romhacking_id``):
 together they uniquely identify an entry, since the numeric id space is shared
@@ -6,8 +10,7 @@ across all four sections (``/hacks/1/`` and ``/translations/1/`` are different
 entries). A flat ``romhacking_<section>_id`` key is also written so a consumer
 can join on a single field per section.
 
-Keys are namespaced ``romhacking_*``, mirroring the ``*_to_extra`` convention
-used across the media-metadata clients.
+Keys are namespaced ``romhacking_*``.
 
 Key namespaces
 --------------
@@ -94,7 +97,7 @@ def _base_extra(entry: "_Entry") -> dict:
 
 
 def hack_to_extra(hack: "Hack") -> dict:
-    """Convert a :class:`~pyromhacking.models.Hack` to an ``extra`` dict."""
+    """Convert a :class:`~pyromhacking.models.Hack` to a flat external-ID dict."""
     extra = _base_extra(hack)
     if hack.hack_type:
         extra["romhacking_hack_type"] = hack.hack_type
@@ -104,7 +107,7 @@ def hack_to_extra(hack: "Hack") -> dict:
 
 
 def translation_to_extra(translation: "Translation") -> dict:
-    """Convert a :class:`~pyromhacking.models.Translation` to an ``extra`` dict."""
+    """Convert a :class:`~pyromhacking.models.Translation` to a flat external-ID dict."""
     extra = _base_extra(translation)
     if translation.language:
         extra["romhacking_language"] = translation.language
@@ -116,7 +119,7 @@ def translation_to_extra(translation: "Translation") -> dict:
 
 
 def utility_to_extra(utility: "Utility") -> dict:
-    """Convert a :class:`~pyromhacking.models.Utility` to an ``extra`` dict."""
+    """Convert a :class:`~pyromhacking.models.Utility` to a flat external-ID dict."""
     extra = _base_extra(utility)
     if utility.os:
         extra["romhacking_os"] = utility.os
@@ -126,7 +129,7 @@ def utility_to_extra(utility: "Utility") -> dict:
 
 
 def document_to_extra(document: "Document") -> dict:
-    """Convert a :class:`~pyromhacking.models.Document` to an ``extra`` dict."""
+    """Convert a :class:`~pyromhacking.models.Document` to a flat external-ID dict."""
     extra = _base_extra(document)
     if document.document_type:
         extra["romhacking_document_type"] = document.document_type

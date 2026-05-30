@@ -20,7 +20,7 @@ one, requests resolve to a Cloudflare challenge page instead of entry data.
 Point the client at your instance:
 
 ```bash
-export PYROMHACKING_FLARESOLVERR_URL=http://192.168.1.116:8191
+export PYROMHACKING_FLARESOLVERR_URL=http://localhost:8191
 ```
 
 ## Fetch an entry

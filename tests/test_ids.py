@@ -1,4 +1,4 @@
-"""Offline tests for ``ExternalIds.extra`` converters and ref parsing."""
+"""Offline tests for external-ID converters and ref parsing."""
 from pyromhacking._parse import parse_hack, parse_translation
 from pyromhacking.ids import (
     entry_to_extra,

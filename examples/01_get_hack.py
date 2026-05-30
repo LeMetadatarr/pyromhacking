@@ -1,6 +1,6 @@
 """Fetch a single ROM hack and print its core fields.
 
-    export PYROMHACKING_FLARESOLVERR_URL=http://192.168.1.116:8191
+    export PYROMHACKING_FLARESOLVERR_URL=http://localhost:8191
     python examples/01_get_hack.py
 """
 from pyromhacking import get_hack

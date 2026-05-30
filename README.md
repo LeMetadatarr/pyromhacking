@@ -14,7 +14,7 @@ romhacking.net is behind Cloudflare. Every request is routed through a
 one, requests resolve to a challenge page rather than data.
 
 ```bash
-export PYROMHACKING_FLARESOLVERR_URL=http://192.168.1.116:8191
+export PYROMHACKING_FLARESOLVERR_URL=http://localhost:8191
 ```
 
 ## Install
