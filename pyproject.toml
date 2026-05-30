@@ -16,6 +16,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+anon = ["anon_requests"]
 test = ["pytest"]
 
 [project.urls]
