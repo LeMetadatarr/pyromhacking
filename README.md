@@ -1,11 +1,14 @@
 # pyromhacking
 
-Python scraper / API client for [romhacking.net](https://www.romhacking.net)
+Python HTML scraper for [romhacking.net](https://www.romhacking.net)
 (RHDN) — the community database of ROM hacks, fan translations, patching
 utilities, and documentation.
 
-It returns typed dataclasses for the four catalogued sections, enumerates their
-listing pages, and exports HF-publishable datasets.
+It fetches HTML pages, parses them with BeautifulSoup selectors, and returns
+typed dataclasses for the four catalogued sections. There is no official API;
+all field extraction is best-effort against the current page structure and may
+need adjustment if the site layout changes. It also enumerates listing pages
+and exports HF-publishable datasets.
 
 ## FlareSolverr required
 

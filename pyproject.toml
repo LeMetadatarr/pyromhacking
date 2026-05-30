@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pyromhacking"
 dynamic = ["version"]
-description = "Python scraper / API client for romhacking.net (RHDN: ROM hacks, translations, utilities, documents)"
+description = "HTML scraper for romhacking.net (RHDN: ROM hacks, translations, utilities, documents) — no official API, best-effort selectors"
 license = { text = "Apache-2.0" }
 authors = [{ name = "JarbasAi", email = "jarbasai@mailfence.com" }]
 requires-python = ">=3.8"

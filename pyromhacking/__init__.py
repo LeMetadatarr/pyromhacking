@@ -1,8 +1,11 @@
-"""pyromhacking — Python scraper / API client for romhacking.net.
+"""pyromhacking — Python HTML scraper for romhacking.net.
 
 romhacking.net (RHDN) is the community database of ROM hacks, fan translations,
-patching utilities and documentation. This client returns typed dataclasses for
-its four catalogued sections and enumerates their listing pages.
+patching utilities and documentation. There is no official API; this library
+fetches HTML pages and parses them with BeautifulSoup selectors. Field
+extraction is best-effort against the current page structure and may need
+adjustment if the site layout changes. It returns typed dataclasses for the
+four catalogued sections and enumerates their listing pages.
 
 The site sits behind Cloudflare; every request is routed through a FlareSolverr
 instance (``PYROMHACKING_FLARESOLVERR_URL``). See :mod:`pyromhacking.transport`.

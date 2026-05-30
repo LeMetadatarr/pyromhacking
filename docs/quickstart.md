@@ -1,7 +1,10 @@
 # Quickstart
 
-`pyromhacking` is a typed client for [romhacking.net](https://www.romhacking.net)
-(RHDN): ROM hacks, fan translations, patching utilities, and documents.
+`pyromhacking` is an HTML scraper for [romhacking.net](https://www.romhacking.net)
+(RHDN): ROM hacks, fan translations, patching utilities, and documents. The site
+has no official API; the library fetches pages and parses them with
+BeautifulSoup selectors. Field extraction is best-effort and may need
+adjustment if the site layout changes.
 
 ## Install
 
