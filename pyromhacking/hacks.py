@@ -16,13 +16,16 @@ from typing import Iterator, List, Optional
 from pyromhacking import transport
 from pyromhacking._parse import (
     NotFoundError,
+    SearchResultPage,
     parse_entry,
     parse_listing,
+    parse_search_results,
 )
 from pyromhacking.models import (
     Document,
     Hack,
     SECTION_MODELS,
+    SearchResult,
     Translation,
     Utility,
 )
@@ -110,6 +113,73 @@ def iter_entries(section: str, *, start: int = 1,
             yield get_entry(section, entry_id)
         except NotFoundError:
             continue
+
+
+# ---- search --------------------------------------------------------------
+
+
+def search_entries(
+    section: str,
+    *,
+    title: str = "",
+    author: str = "",
+    game: str = "",
+    platform: int = 0,
+    category: int = 0,
+    startpage: int = 1,
+) -> "SearchResultPage":
+    """Search a section and return a :class:`~pyromhacking._parse.SearchResultPage`.
+
+    Filters are sent as GET parameters to the romhacking.net listing page,
+    which returns an HTML results table filtered server-side.
+
+    Args:
+        section: one of :data:`SECTIONS`.
+        title: free-text filter applied to the entry title.
+        author: free-text filter applied to the author / released-by field.
+        game: free-text filter applied to the original game title.
+        platform: numeric platform id (0 = any); see the site's dropdown.
+        category: numeric category id (0 = any).
+        startpage: 1-based results page.
+
+    Returns:
+        :class:`~pyromhacking._parse.SearchResultPage` with ``.results``,
+        ``.total``, ``.page_from``, ``.page_to``.
+    """
+    _check_section(section)
+    params: dict = {"page": section, "startpage": startpage}
+    if title:
+        params["title"] = title
+    if author:
+        params["author"] = author
+    if game:
+        params["game"] = game
+    if platform:
+        params["platform"] = platform
+    if category:
+        params["category"] = category
+    html = transport.get_html("/", params=params)
+    return parse_search_results(html, section)
+
+
+def search_hacks(title: str = "", **kwargs) -> "SearchResultPage":
+    """Search the hacks section.  See :func:`search_entries` for all params."""
+    return search_entries("hacks", title=title, **kwargs)
+
+
+def search_translations(title: str = "", **kwargs) -> "SearchResultPage":
+    """Search the translations section."""
+    return search_entries("translations", title=title, **kwargs)
+
+
+def search_utilities(title: str = "", **kwargs) -> "SearchResultPage":
+    """Search the utilities section."""
+    return search_entries("utilities", title=title, **kwargs)
+
+
+def search_documents(title: str = "", **kwargs) -> "SearchResultPage":
+    """Search the documents section."""
+    return search_entries("documents", title=title, **kwargs)
 
 
 # ---- per-section convenience wrappers ------------------------------------

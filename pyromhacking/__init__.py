@@ -34,6 +34,11 @@ from pyromhacking.hacks import (
     list_ids,
     list_translations,
     list_utilities,
+    search_documents,
+    search_entries,
+    search_hacks,
+    search_translations,
+    search_utilities,
 )
 from pyromhacking.ids import (
     document_to_extra,
@@ -50,6 +55,7 @@ from pyromhacking.models import (
     DownloadFile,
     Hack,
     SECTION_MODELS,
+    SearchResult,
     Translation,
     Utility,
 )
@@ -63,6 +69,7 @@ __all__ = [
     "DownloadFile",
     "Hack",
     "SECTION_MODELS",
+    "SearchResult",
     "Translation",
     "Utility",
     # fetch / listing
@@ -79,6 +86,11 @@ __all__ = [
     "list_ids",
     "list_translations",
     "list_utilities",
+    "search_documents",
+    "search_entries",
+    "search_hacks",
+    "search_translations",
+    "search_utilities",
     # ids / cross-ref
     "document_to_extra",
     "entry_to_extra",

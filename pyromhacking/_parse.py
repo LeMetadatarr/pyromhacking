@@ -36,6 +36,7 @@ from pyromhacking.models import (
     DownloadFile,
     Hack,
     SECTION_MODELS,
+    SearchResult,
     Translation,
     Utility,
 )
@@ -350,6 +351,121 @@ def parse_listing(html: str, section: str) -> List[str]:
             seen.add(m.group(1))
             ids.append(m.group(1))
     return ids
+
+
+def parse_search_results(html: str, section: str) -> "SearchResultPage":
+    """Parse a search/listing results table into a :class:`SearchResultPage`.
+
+    The results table has a caption ``(X to Y) of Z Results`` and column
+    headers that vary by section.  This function maps whatever columns are
+    present to :class:`~pyromhacking.models.SearchResult` fields.
+
+    Returns:
+        :class:`SearchResultPage` with ``.results``, ``.total``,
+        ``.page_from``, ``.page_to``.
+    """
+    soup = _soup(html)
+    table = soup.find("table")
+    results: List[SearchResult] = []
+    total = page_from = page_to = 0
+
+    if not table:
+        return SearchResultPage(results=results, total=total,
+                                page_from=page_from, page_to=page_to)
+
+    cap = table.find("caption")
+    if cap:
+        m = re.search(r"\((\d+)\s+to\s+(\d+)\)\s+of\s+(\d+)", cap.get_text())
+        if m:
+            page_from, page_to, total = int(m.group(1)), int(m.group(2)), int(m.group(3))
+
+    rows = table.find_all("tr")
+    if not rows:
+        return SearchResultPage(results=results, total=total,
+                                page_from=page_from, page_to=page_to)
+
+    # Parse column headers from first row
+    header_row = rows[0]
+    headers = [clean(th.get_text()).lower()
+               for th in header_row.find_all(["th", "td"])]
+
+    col = {h: i for i, h in enumerate(headers)}
+
+    def _cell(cells, key: str, *fallbacks: str) -> str:
+        for k in (key, *fallbacks):
+            idx = col.get(k)
+            if idx is not None and idx < len(cells):
+                return clean(cells[idx].get_text())
+        return ""
+
+    pat = re.compile(rf"/{re.escape(section)}/(\d+)/?")
+    base_url = f"https://www.romhacking.net/{section}/"
+
+    for row in rows[1:]:
+        cells = row.find_all("td")
+        if not cells:
+            continue
+        # Find the section-specific link to get the entry id
+        entry_id = ""
+        title_link_url = ""
+        for a in row.find_all("a", href=True):
+            m = pat.search(a["href"])
+            if m:
+                entry_id = m.group(1)
+                title_link_url = base_url + entry_id + "/"
+                break
+        if not entry_id:
+            continue
+
+        results.append(SearchResult(
+            id=entry_id,
+            section=section,
+            url=title_link_url,
+            title=_cell(cells, "title"),
+            released_by=_cell(cells, "released by"),
+            game=_cell(cells, "original game", "game"),
+            genre=_cell(cells, "genre"),
+            platform=_cell(cells, "platform"),
+            category=_cell(cells, "category"),
+            status=_cell(cells, "status"),
+            language=_cell(cells, "lang", "language"),
+            downloads=parse_int(_cell(cells, "downloads")),
+            date=_cell(cells, "date"),
+        ))
+
+    return SearchResultPage(results=results, total=total,
+                            page_from=page_from, page_to=page_to)
+
+
+class SearchResultPage:
+    """Return value from :func:`parse_search_results`."""
+
+    __slots__ = ("results", "total", "page_from", "page_to")
+
+    def __init__(
+        self,
+        results: List[SearchResult],
+        total: int,
+        page_from: int,
+        page_to: int,
+    ) -> None:
+        self.results = results
+        self.total = total
+        self.page_from = page_from
+        self.page_to = page_to
+
+    def __len__(self) -> int:
+        return len(self.results)
+
+    def __iter__(self):
+        return iter(self.results)
+
+    def __repr__(self) -> str:
+        return (
+            f"SearchResultPage(total={self.total}, "
+            f"page={self.page_from}-{self.page_to}, "
+            f"results={len(self.results)})"
+        )
 
 
 def parse_listing_next_page(html: str) -> Optional[int]:

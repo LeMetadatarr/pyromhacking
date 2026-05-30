@@ -24,3 +24,33 @@ def translation_html() -> str:
 @pytest.fixture
 def listing_html() -> str:
     return load("hacks_listing.html")
+
+
+@pytest.fixture
+def utilities_listing_html() -> str:
+    return load("utilities_listing.html")
+
+
+@pytest.fixture
+def documents_listing_html() -> str:
+    return load("documents_listing.html")
+
+
+@pytest.fixture
+def utility_html() -> str:
+    return load("utility_1887.html")
+
+
+@pytest.fixture
+def document_html() -> str:
+    return load("document_936.html")
+
+
+@pytest.fixture
+def search_hacks_html() -> str:
+    return load("search_hacks_zelda.html")
+
+
+@pytest.fixture
+def search_translations_html() -> str:
+    return load("search_translations_zelda.html")

@@ -1,0 +1,286 @@
+<html lang="en"><head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="This is a general sprite editing tool for Harvest Moon 64
+
+Supported flows:
+- Adding new textures">
+		<meta property="og:url" content="https://www.romhacking.net/utilities/1887/">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Harvest Moon 64 Sprite Editor">
+        <meta property="og:site_name" content="ROMhacking.net">
+        <meta property="og:image" content="https://www.romhacking.net/utilities/screenshots/1887screenshot1.png">
+        <meta property="og:description" content="This is a general sprite editing tool for Harvest Moon 64
+
+Supported flows:
+- Adding new textures">
+        <link rel="alternate" type="application/rss+xml" title="ROMhacking.net" href="/romhackingdotnet.rss">
+    	<link rel="stylesheet" type="text/css" href="/themes/default/css/base.css">
+		<link rel="stylesheet" type="text/css" href="/themes/boss/boss.css">
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="/themes/default/css/simpleLightbox.css">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"> 
+		<link rel="image_src" href="/images/rhdnfacebook.jpg">
+		<title>Romhacking.net - Utilities - Harvest Moon 64 Sprite Editor</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script src="/themes/default/scripts/javascript.js"></script>
+		<script src="/themes/default/scripts/simpleLightbox.js"></script>
+        <script src="/hash/hasher.js"></script>
+	</head>
+	<body>
+		<div id="top">
+			<div id="header_wrapper">
+                <a href="/">
+                    <h1>
+						<img id="logo" src="/themes/boss/logo.png" alt="Romhacking.net">
+					</h1>
+                </a>
+                <div id="navbar_wrap">
+                    <label for="show-menu" class="show-menu"></label>
+                    <input type="checkbox" id="show-menu">
+                                        <ul id="navbar">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/forum/">Forum</a></li>
+                        <li><a href="#Sections">Sections</a>
+                            <ul>
+                                <li><a href="/documents/">Documents</a></li>
+                                <li><a href="/utilities/">Utilities</a></li>
+                                <li><a href="/translations/">Translations</a></li>
+                                <li><a href="/hacks/">ROM Hacks</a></li>
+                                <li><a href="/games/">Games</a></li>
+                                <li><a href="/homebrew/">Homebrew</a></li>
+                                <li><a href="/abandoned/">Abandoned</a></li>
+                                <li><a href="/news/">News Archive</a></li>
+                            </ul>
+                        </li>	
+                        <li><a href="#Community">Community</a>
+                            <ul>
+                                <li><a href="/forum/">Forum</a></li>
+                                <li><a href="/wiki/">Wiki</a></li>
+                                <li><a href="/transhistory/">Community History</a></li>
+                                <li><a href="/community/">Community Database</a></li>
+                                <li><a href="/links/">Links</a></li>
+                            </ul>
+                        </li>	
+                        <li><a href="#Submissions">Submissions</a>
+                            <ul>
+                                <li><a href="/submissions/">Submit Files</a></li>
+                                <li><a href="/submitnews/">Submit News</a></li>
+                                <li><a href="/submissions/QueueStatus/">Queue Status</a></li>
+                                <li><a href="/scratchpad/">The Scratchpad</a></li>
+								<li><a href="/patch/">Online ROM Patcher</a></li>
+								<li><a href="/hash/">Online ROM Hasher</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#Changes">Changes</a>
+                            <ul>
+                                <li><a href="/submissions/recent/">Change Log</a></li>
+                                <li><a href="/submissions/extdocsubmissions/">Latest Documents</a></li>
+                                <li><a href="/submissions/extutilsubmissions/">Latest Utilities</a></li>
+                                <li><a href="/submissions/exttranssubmissions/">Latest Translations</a></li>
+                                <li><a href="/submissions/exthacksubmissions/">Latest Hacks</a></li>
+                                <li><a href="/submissions/extreviewsubmissions/">Latest Reviews</a></li>
+                                <li><a href="/submissions/searchpage/">Advanced Search</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#Seach">Search</a>
+                            <ul>
+                                <li><form class="" method="get" action="https://www.google.com/search" accept-charset="UTF-8"><div>
+		<label for="q"><span class="formhelp" data-tooltip=""></span></label><input type="text" name="q" id="q" value="" maxlength="150">
+		<input type="submit" name="btnG" id="btnG" value="Search">
+		<input type="hidden" name="sitesearch" id="sitesearch" value="www.romhacking.net">
+	</div>
+</form></li>
+                            </ul>
+                        </li>						
+                        <li id="NavBarHelp"><a href="#Help">Help</a>
+                            <ul>
+                                <li><a href="/about/">About this Site</a></li>
+                                <li><a href="/start/">Getting Started</a></li>
+								<li><a href="/policy/">RHDN Policy</a></li>
+                                <li><a href="/dictionary/">Dictionary</a></li>
+                                <li><a href="/faq/">FAQ</a></li>
+                                <li><a href="/contact/">Contact Staff</a></li>
+                            </ul>
+                        </li>	
+                    </ul>                    <br class="clear">
+                </div>
+            </div>
+        </div>    
+        <div id="wrapper">
+		<div id="leftbar">
+            <div class="newsitem">
+                <div class="topbar">
+                    <h2>Sections</h2>
+                </div>
+                <div class="newsbody">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/documents/">Documents</a></li>
+                        <li><a href="/utilities/">Utilities</a></li>
+                        <li><a href="/translations/">Translations</a></li>
+                        <li><a href="/hacks/">ROM Hacks</a></li>
+                        <li><a href="/games/">Games</a></li>
+                        <li><a href="/homebrew/">Homebrew</a></li>
+                        <li><a href="/abandoned/">Abandoned</a></li>
+                        <li><a href="/news/">News Archive</a></li>
+                    </ul>
+                </div>
+            </div>
+                
+            <div class="newsitem">
+                <div class="topbar">
+                    <h2>Community</h2>
+                </div>
+                <div class="newsbody">
+                    <ul>
+                        <li><a href="/forum/">Forum</a></li>
+                        <li><a href="/wiki/">Wiki</a></li>
+                        <li><a href="/transhistory/">History</a></li>
+                        <li><a href="/community/">Community Database</a></li>
+                        <li><a href="/links/">Links</a></li>
+                    </ul>
+                </div>
+            </div>
+			<div class="newsitem">
+                <div class="topbar">
+                    <h2>Submissions</h2>
+                </div>
+                <div class="newsbody">
+                    <ul>
+                        <li><a href="/submissions/">Submit Files</a></li>
+                        <li><a href="/submitnews/">Submit News</a></li>
+                        <li><a href="/submissions/QueueStatus/">Queue Status</a></li>
+                        <li><a href="/scratchpad/">The Scratchpad</a></li>
+                        <li><a href="/patch/">Online ROM Patcher</a></li>
+                        <li><a href="/hash/">Online ROM Hasher</a></li>
+                    </ul>
+                </div>
+            </div>
+			<div class="newsitem">
+                <div class="topbar">
+                    <h2>Help</h2>
+                </div>
+                <div class="newsbody">
+                    <ul>
+                        <li><a href="/about/">About this Site</a></li>
+                        <li><a href="/start/">Getting Started</a></li>
+                        <li><a href="/policy/">RHDN Policy</a></li>
+                        <li><a href="/dictionary/">Dictionary</a></li>
+                        <li><a href="/faq/">FAQ</a></li>
+                        <li><a href="/contact/">Contact Staff</a></li>
+                    </ul>
+                </div>
+            </div>
+			                <div class="newsitem">
+                    <div class="topbar">
+                        <h2>Theme</h2>
+                    </div>
+                    <div class="newsbody">
+                        <form class="" method="post" action="/?page=main&amp;action=formaction" accept-charset="UTF-8"><div>
+		<label for="themeid"><span class="formhelp" data-tooltip=""></span></label><select id="themeid" name="themeid">
+<option value="">None Selected</option>
+<option selected="selected" value="boss">RHDN Light (Default)</option>
+<option value="dark">RHDN Dark</option>
+<option value="metroid">Metroid</option>
+<option value="romh">RHDN Pro</option>
+<option value="ocean">ROM Ocean</option>
+</select>
+		<input type="submit" name="stylechange" id="stylechange" value="Theme">
+	</div>
+</form>                    </div> 
+                </div>
+                        
+        </div>
+				<div id="main">
+		<div class="newsitem">
+	<div class="topbar">
+		<h2>Harvest Moon 64 Sprite Editor</h2>
+		<div class="date">Graphics Editors</div>
+	</div>
+	<div class="transbody">
+		<div class="floatl">
+    		<table class="entryinfo entryinfolarge">
+				<caption>Utility Information</caption>
+				<tbody>
+					<tr>
+						<td colspan="2">
+							<div class="imageGallery">
+								<a href="https://www.romhacking.net/utilities/screenshots/1887screenshot1.png"><img src="https://www.romhacking.net/utilities/screenshots/1887screenshot1.png" alt="Screenshot"></a>							</div>	
+						</td>
+					</tr>
+					<tr>
+						<th>Author</th><td><a href="/community/9281/">harvestwhisperer</a></td>
+					</tr>
+					<tr>
+						<th>Category</th><td>Graphics Editors</td>
+					</tr>
+					<tr>
+						<th>Platform</th><td>Nintendo 64</td>
+					</tr>
+					<tr>
+						<th>Game</th><td><a href="/games/5616/">Harvest Moon 64</a></td>
+					</tr>
+					<tr>	
+						<th>OS</th><td>OS Independent</td>
+					</tr>
+					<tr>	
+						<th>Version</th><td>0.1</td>
+					</tr>
+					<tr>
+						<th>Release Date</th><td>26 May 2026</td>
+					</tr>
+					<tr>
+						<th>Downloads</th><td>2</td>
+					</tr>	
+					<tr>
+						<th>Last Modified</th>
+												<td>27 May 2026</td>
+											</tr>
+				</tbody>
+			</table>
+					</div>
+		<div class="entrybody entrybodylarge">
+			<h3>Description:</h3>
+			<div><p>This is a general sprite editing tool for Harvest Moon 64
+</p>
+<p>Supported flows:
+</p>
+<ul>
+<li>Adding new textures to a sprite asset via importing indexed PNGs</li>
+<li>Palette editing and swapping</li>
+<li>Creating and editing animation data</li>
+<li>Editing entity animation scripts</li>
+<li>Generating inc.c and .h files with animation scripts, character dialogue avatar tables, and animation labels</li>
+<li>Font/glyph editing</li>
+<li>Extracting all assets via ROM or pointing to the decomp root with automatic integration with dev build flows</li>
+</ul>
+<p>Certain map sprites are not editable with this tool in favor of planned integrated map editor.</p>
+</div>
+			<h3>Links:</h3>
+			<ul>
+				<li><a href="/download/utilities/1887/">Download</a></li>
+			</ul>
+					</div>
+	</div>
+</div>	
+<div class="newsitem">		
+	<div class="topbar">
+		User Review Information
+	</div>
+	<div class="transbody">
+		<div class="center">
+						No User Reviews!		</div>
+			</div>
+</div>	</div>
+</div>
+<div id="footer">
+	©2005-2026 All Rights Reserved.<br>
+		<a href="/about/">About Us</a>
+	| <a href="/policy/">RHDN Policy</a>
+	    <br>
+</div>
+
+</body></html>

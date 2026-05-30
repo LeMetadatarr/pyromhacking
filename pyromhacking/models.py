@@ -182,6 +182,51 @@ class Document(_Entry):
         return d
 
 
+@dataclass
+class SearchResult:
+    """A single row returned by a romhacking.net search / listing page.
+
+    These are lightweight summary records parsed from the results table.
+    Call :func:`~pyromhacking.hacks.get_entry` with ``id`` and ``section``
+    to fetch the full :class:`_Entry` detail.
+    """
+
+    id: str = ""
+    section: str = ""
+    url: str = ""
+    title: str = ""
+    released_by: str = ""
+    game: str = ""
+    genre: str = ""
+    platform: str = ""
+    category: str = ""
+    status: str = ""
+    language: str = ""
+    downloads: Optional[int] = None
+    date: str = ""
+
+    @property
+    def as_dict(self) -> dict:
+        return {
+            "id": self.id,
+            "section": self.section,
+            "url": self.url,
+            "title": self.title,
+            "released_by": self.released_by,
+            "game": self.game,
+            "genre": self.genre,
+            "platform": self.platform,
+            "category": self.category,
+            "status": self.status,
+            "language": self.language,
+            "downloads": self.downloads,
+            "date": self.date,
+        }
+
+    def __str__(self) -> str:
+        return f"{self.title} ({self.platform})" if self.platform else self.title
+
+
 # Section name -> model class, for generic dispatch.
 SECTION_MODELS = {
     "hacks": Hack,
