@@ -1,15 +1,15 @@
 # Search
 
-romhacking.net exposes no JSON or AJAX API. All data — including search results
-— is served as HTML pages. The search/listing endpoint is the same URL used for
-ordinary section listing pages, with additional GET parameters for filtering:
+romhacking.net exposes no JSON or AJAX API. All data, including search
+results, is served as HTML pages. The search endpoint is the same URL used
+for ordinary section listing pages, with extra GET parameters for filtering:
 
 ```
 GET /?page=<section>&title=<query>[&author=<a>][&platform=<id>][&category=<id>][&startpage=<n>]
 ```
 
 The response is a full HTML page containing a `<table>` with a caption of the
-form `(X to Y) of Z Results`. Each row corresponds to one entry; the first
+form `(X to Y) of Z Results`. Each row corresponds to one entry. The first
 column title-links to the entry detail page (e.g. `/hacks/2796/`), from which
 the numeric id is extracted.
 
@@ -54,8 +54,8 @@ page3 = search_entries("utilities", title="tile")
 | `downloads` | int | Download count |
 | `date` | str | Release date string |
 
-Call `get_entry(section, result.id)` to fetch the full detail record
-(`Hack`, `Translation`, `Utility`, or `Document`).
+Call `get_entry(section, result.id)` to fetch the full detail record (`Hack`,
+`Translation`, `Utility`, or `Document`).
 
 ## Pagination
 
@@ -74,7 +74,10 @@ while True:
 
 ## No JSON endpoint
 
-No `api/`, `ajax/`, or JSON-returning endpoint was found on romhacking.net
-during active probing (May 2026). The site uses jQuery UI widgets but all
-dynamic content is rendered server-side and returned as HTML. Parsing is
-performed with BeautifulSoup against the stable `<table>` result grid.
+Active probing in May 2026 found no `api/`, `ajax/`, or JSON-returning
+endpoint on romhacking.net. The site uses jQuery UI widgets, but all dynamic
+content renders server-side and returns as HTML. Parsing uses BeautifulSoup
+against the stable `<table>` result grid.
+
+---
+[← Listing & fetch](listing.md) · [Home](../README.md) · [Cross-reference ids →](ids.md)

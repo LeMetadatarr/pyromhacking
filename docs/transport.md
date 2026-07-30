@@ -6,10 +6,10 @@ FlareSolverr.
 
 ## Why FlareSolverr
 
-romhacking.net serves an interactive Cloudflare challenge to bare HTTP clients
-— even `curl_cffi` impersonation does not clear it. A FlareSolverr instance
-solves the challenge in a real browser and returns the resolved HTML.
-FlareSolverr is **mandatory** for this client.
+romhacking.net serves an interactive Cloudflare challenge to bare HTTP
+clients. Even `curl_cffi` impersonation does not clear it. A FlareSolverr
+instance solves the challenge in a real browser and returns the resolved
+HTML. FlareSolverr is mandatory for this client.
 
 ## Configuration
 
@@ -17,8 +17,8 @@ FlareSolverr is **mandatory** for this client.
 | --- | --- |
 | `PYROMHACKING_FLARESOLVERR_URL` | FlareSolverr endpoint, e.g. `http://localhost:8191` |
 
-The transport uses `env_prefix="PYROMHACKING"`, so any other
-`unblock_requests` knobs are read from `PYROMHACKING_*` variables.
+The transport uses `env_prefix="PYROMHACKING"`. Any other `unblock_requests`
+knob is read from a `PYROMHACKING_*` variable.
 
 ```python
 from pyromhacking import transport
@@ -34,5 +34,8 @@ for bulk crawls with `set_delay`, or pass `--delay` to the dataset CLI.
 
 ## Wayback fallback
 
-The session is created with `wayback_fallback=True`: if a live fetch fails, it
-falls back to the Internet Archive snapshot where available.
+The session is created with `wayback_fallback=True`. If a live fetch fails,
+it falls back to the Internet Archive snapshot where available.
+
+---
+[← Quickstart](quickstart.md) · [Home](../README.md) · [Models →](models.md)

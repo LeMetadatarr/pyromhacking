@@ -1,20 +1,19 @@
 # pyromhacking
 
-Python HTML scraper for [romhacking.net](https://www.romhacking.net)
-(RHDN) — the community database of ROM hacks, fan translations, patching
-utilities, and documentation.
-
-It fetches HTML pages, parses them with BeautifulSoup selectors, and returns
-typed dataclasses for the four catalogued sections. There is no official API;
-all field extraction is best-effort against the current page structure and may
-need adjustment if the site layout changes. It also enumerates listing pages
-and exports HF-publishable datasets.
+`pyromhacking` is a Python HTML scraper for [romhacking.net](https://www.romhacking.net)
+(RHDN), the community database of ROM hacks, fan translations, patching
+utilities, and documentation. The site has no official API, so the library
+fetches HTML pages and parses them with BeautifulSoup selectors. Field
+extraction is best-effort against the current page structure and may need
+adjustment if the site layout changes. It returns typed dataclasses for the
+four catalogued sections, enumerates listing pages, and exports
+Hugging-Face-publishable datasets.
 
 ## FlareSolverr required
 
-romhacking.net is behind Cloudflare. Every request is routed through a
-[FlareSolverr](https://github.com/FlareSolverr/FlareSolverr) instance — without
-one, requests resolve to a challenge page rather than data.
+romhacking.net sits behind Cloudflare. The client routes every request through
+a [FlareSolverr](https://github.com/FlareSolverr/FlareSolverr) instance.
+Without one, requests resolve to a challenge page instead of data.
 
 ```bash
 export PYROMHACKING_FLARESOLVERR_URL=http://localhost:8191
@@ -43,9 +42,9 @@ for h in iter_entries("hacks", max_pages=2):
 
 ### Sections
 
-`hacks`, `translations`, `utilities`, `documents` — fetched with
-`get_hack` / `get_translation` / `get_utility` / `get_document` or the generic
-`get_entry(section, id)`.
+The library covers four sections: `hacks`, `translations`, `utilities`,
+`documents`. Fetch an entry with `get_hack` / `get_translation` /
+`get_utility` / `get_document`, or the generic `get_entry(section, id)`.
 
 ### Dataset export
 
@@ -59,11 +58,20 @@ python -m pyromhacking.dataset all --out romhacking_dataset --limit 5
 - [Transport / FlareSolverr](docs/transport.md)
 - [Models](docs/models.md)
 - [Listing & fetch](docs/listing.md)
+- [Search](docs/search.md)
 - [Cross-reference ids](docs/ids.md)
 - [Dataset](docs/dataset.md)
 
 See [`examples/`](examples) for runnable scripts and [PROVENANCE.md](PROVENANCE.md)
 for data provenance.
+
+## Related projects
+
+- [TigreGotico/pygamebrew](https://github.com/TigreGotico/pygamebrew)
+- [TigreGotico/pyrateyourmusic](https://github.com/TigreGotico/pyrateyourmusic)
+- [TigreGotico/pysmwcentral](https://github.com/TigreGotico/pysmwcentral)
+- [TigreGotico/pytcrf](https://github.com/TigreGotico/pytcrf)
+- [TigreGotico/pytvtropes](https://github.com/TigreGotico/pytvtropes)
 
 ## Tests
 

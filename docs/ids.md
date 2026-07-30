@@ -6,11 +6,7 @@ across data sources, and parses entry references back out of URLs.
 
 ## Anchor
 
-The numeric id space is shared across sections (`/hacks/1/` and
-`/translations/1/` are different entries), so the canonical anchor is the pair
-**(`romhacking_section`, `romhacking_id`)**. A flat per-section key
-(`romhacking_<section>_id`) is also written so a consumer can join on a single
-field.
+The numeric id space is shared across sections: `/hacks/1/` and `/translations/1/` are different entries. The canonical anchor is the pair `romhacking_section` and `romhacking_id`. A flat per-section key (`romhacking_<section>_id`) is also written, so a consumer can join on a single field.
 
 ```python
 from pyromhacking import get_hack, hack_to_extra
@@ -32,7 +28,7 @@ All keys are namespaced `romhacking_*`.
 | `translation_to_extra(tr)` | `Translation` |
 | `utility_to_extra(util)` | `Utility` |
 | `document_to_extra(doc)` | `Document` |
-| `entry_to_extra(entry)` | any — dispatches on `entry.section` |
+| `entry_to_extra(entry)` | any, dispatches on `entry.section` |
 
 ## URL helpers
 
@@ -42,3 +38,6 @@ from pyromhacking import entry_url, parse_ref
 entry_url("hacks", "1")                                  # canonical URL
 parse_ref("https://www.romhacking.net/translations/7/")  # ("translations", "7")
 ```
+
+---
+[← Search](search.md) · [Home](../README.md) · [Dataset →](dataset.md)
