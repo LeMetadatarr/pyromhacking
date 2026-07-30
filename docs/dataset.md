@@ -1,7 +1,7 @@
 # Dataset
 
-`pyromhacking.dataset` builds HF-publishable JSONL datasets from romhacking.net.
-Four configs, one per catalogued section:
+`pyromhacking.dataset` builds HF-publishable JSONL datasets from
+romhacking.net. It has four configs, one per catalogued section:
 
 | Config | Section | Notable fields |
 | --- | --- | --- |
@@ -10,9 +10,9 @@ Four configs, one per catalogued section:
 | `utilities` | tools / patchers | os, language |
 | `documents` | guides / docs | document_type, language |
 
-Each row is the model's `.as_dict` plus an `xref` block — the flattened
-`romhacking_*` cross-reference keys from [`ids`](ids.md), anchored on
-(`romhacking_section`, `romhacking_id`).
+Each row is the model's `.as_dict` plus an `xref` block: the flattened
+`romhacking_*` cross-reference keys from [ids](ids.md), anchored on
+`romhacking_section` and `romhacking_id`.
 
 ## CLI
 
@@ -29,7 +29,7 @@ python -m pyromhacking.dataset translations --out tr.jsonl --max-pages 5
 python -m pyromhacking.dataset all --out romhacking_dataset --limit 5
 ```
 
-The console entry point `pyromhacking-dataset` is equivalent.
+The console entry point `pyromhacking-dataset` does the same thing.
 
 ## Programmatic
 
@@ -45,11 +45,15 @@ dataset.export_all("out_dir")
 
 ## Cost and politeness
 
-Every row costs one FlareSolverr-routed fetch (listing + detail). A full export
-of all four sections is tens of thousands of requests — run it on a dedicated
-machine, raise the delay (`--delay`), and validate locally with `--limit` first.
+Every row costs one FlareSolverr-routed fetch for the listing and the detail
+page. A full export of all four sections needs tens of thousands of
+requests. Run it on a dedicated machine, raise the delay (`--delay`), and
+validate locally with `--limit` first.
 
 ## Provenance
 
-Content is authored by the romhacking.net community. See
-[../PROVENANCE.md](../PROVENANCE.md) before redistributing.
+The romhacking.net community authors the content. See
+[../PROVENANCE.md](../PROVENANCE.md) before you redistribute it.
+
+---
+[← Cross-reference ids](ids.md) · [Home](../README.md)

@@ -1,8 +1,8 @@
 # Listing and fetch
 
-`pyromhacking.hacks` enumerates section listings and fetches detail pages. The
-four sections share one listing skeleton (`/?page=<section>&startpage=N`) and
-one detail skeleton (`/<section>/<id>/`).
+`pyromhacking.hacks` enumerates section listings and fetches detail pages.
+The four sections share one listing skeleton (`/?page=<section>&startpage=N`)
+and one detail skeleton (`/<section>/<id>/`).
 
 ## Fetch one entry
 
@@ -38,11 +38,14 @@ for hack in iter_entries("hacks", max_pages=2):
     print(hack.title, hack.system)
 ```
 
-`iter_entries` composes `iter_ids` + `get_entry` and skips ids that 404 mid-walk
-rather than aborting the crawl.
+`iter_entries` composes `iter_ids` and `get_entry`. It skips ids that 404
+mid-walk instead of aborting the crawl.
 
 ## Politeness
 
-Every fetch is throttled (see [transport.md](transport.md)). For multi-page
-crawls raise the delay with `transport.set_delay(...)` and cap pages with
+Every fetch is throttled. See [transport.md](transport.md). For multi-page
+crawls, raise the delay with `transport.set_delay(...)` and cap pages with
 `max_pages`.
+
+---
+[← Models](models.md) · [Home](../README.md) · [Search →](search.md)

@@ -1,8 +1,8 @@
 # Quickstart
 
 `pyromhacking` is an HTML scraper for [romhacking.net](https://www.romhacking.net)
-(RHDN): ROM hacks, fan translations, patching utilities, and documents. The site
-has no official API; the library fetches pages and parses them with
+(RHDN): ROM hacks, fan translations, patching utilities, and documents. The
+site has no official API. The library fetches pages and parses them with
 BeautifulSoup selectors. Field extraction is best-effort and may need
 adjustment if the site layout changes.
 
@@ -16,9 +16,10 @@ Dependencies: `requests`, `beautifulsoup4`, `unblock_requests`.
 
 ## FlareSolverr is required
 
-romhacking.net sits behind Cloudflare. Every request is routed through a
-[FlareSolverr](https://github.com/FlareSolverr/FlareSolverr) instance; without
-one, requests resolve to a Cloudflare challenge page instead of entry data.
+romhacking.net sits behind Cloudflare. The client routes every request through
+a [FlareSolverr](https://github.com/FlareSolverr/FlareSolverr) instance.
+Without one, requests resolve to a Cloudflare challenge page instead of entry
+data.
 
 Point the client at your instance:
 
@@ -52,4 +53,7 @@ for entry_id in iter_ids("hacks", max_pages=2):
 ```
 
 See [transport.md](transport.md), [models.md](models.md), [listing.md](listing.md),
-[ids.md](ids.md), and [dataset.md](dataset.md).
+[search.md](search.md), [ids.md](ids.md), and [dataset.md](dataset.md).
+
+---
+[Home](../README.md) · [Transport / FlareSolverr →](transport.md)

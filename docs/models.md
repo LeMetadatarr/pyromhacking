@@ -1,7 +1,8 @@
 # Models
 
 Each catalogued section maps to a dataclass in `pyromhacking.models`. All four
-share a common field set (`_Entry`); section-specific fields are added per type.
+share a common field set (`_Entry`). Section-specific fields are added per
+type.
 
 ## Common fields (`_Entry`)
 
@@ -29,16 +30,16 @@ share a common field set (`_Entry`); section-specific fields are added per type.
 
 ## Section types
 
-- **`Hack`** — adds `hack_type`, `genre`, `patching_information`.
-- **`Translation`** — adds `language`, `genre`, `published_by`, `game_date`,
+- `Hack` adds `hack_type`, `genre`, `patching_information`.
+- `Translation` adds `language`, `genre`, `published_by`, `game_date`,
   `game_description`, `patching_information`.
-- **`Utility`** — adds `os`, `language`.
-- **`Document`** — adds `document_type`, `language`.
+- `Utility` adds `os`, `language`.
+- `Document` adds `document_type`, `language`.
 
-## Serialisation
+## Serialization
 
-Every model has `.as_dict` (recursively flattens nested `files` / `credits`)
-and a friendly `__str__` (`"<title> (<system>)"`).
+Every model has `.as_dict`, which recursively flattens the nested `files` and
+`credits` lists, and a `__str__` method (`"<title> (<system>)"`).
 
 ```python
 from pyromhacking import get_hack
@@ -48,3 +49,6 @@ str(hack)                   # "Dragoon X Omega - Gold Edition (NES)"
 ```
 
 `SECTION_MODELS` maps a section name to its class for generic dispatch.
+
+---
+[← Transport / FlareSolverr](transport.md) · [Home](../README.md) · [Listing & fetch →](listing.md)
