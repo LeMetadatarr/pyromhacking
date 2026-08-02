@@ -74,10 +74,10 @@ while True:
 
 ## No JSON endpoint
 
-Active probing in May 2026 found no `api/`, `ajax/`, or JSON-returning
-endpoint on romhacking.net. The site uses jQuery UI widgets, but all dynamic
-content renders server-side and returns as HTML. Parsing uses BeautifulSoup
-against the stable `<table>` result grid.
+romhacking.net exposes no `api/`, `ajax/`, or JSON-returning endpoint. The
+site uses jQuery UI widgets, but all dynamic content renders server-side and
+returns as HTML. Parsing uses BeautifulSoup against the stable `<table>`
+result grid.
 
 ---
 [← Listing & fetch](listing.md) · [Home](../README.md) · [Cross-reference ids →](ids.md)

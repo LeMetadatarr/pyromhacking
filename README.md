@@ -67,11 +67,10 @@ for data provenance.
 
 ## Related projects
 
-- [TigreGotico/pygamebrew](https://github.com/TigreGotico/pygamebrew)
-- [TigreGotico/pyrateyourmusic](https://github.com/TigreGotico/pyrateyourmusic)
-- [TigreGotico/pysmwcentral](https://github.com/TigreGotico/pysmwcentral)
-- [TigreGotico/pytcrf](https://github.com/TigreGotico/pytcrf)
-- [TigreGotico/pytvtropes](https://github.com/TigreGotico/pytvtropes)
+- [LeMetadatarr/pyrateyourmusic](https://github.com/LeMetadatarr/pyrateyourmusic)
+- [LeMetadatarr/pysmwcentral](https://github.com/LeMetadatarr/pysmwcentral)
+- [LeMetadatarr/pytcrf](https://github.com/LeMetadatarr/pytcrf)
+- [LeMetadatarr/pytvtropes](https://github.com/LeMetadatarr/pytvtropes)
 
 ## Tests
 
