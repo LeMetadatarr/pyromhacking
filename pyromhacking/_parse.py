@@ -22,20 +22,12 @@ from typing import Dict, List, Optional, Tuple
 
 from bs4 import BeautifulSoup
 
-from pyromhacking._clean import (
-    clean,
-    clean_multiline,
-    clean_or_none,
-    id_from_url,
-    parse_float,
-    parse_int,
-)
+from pyromhacking._clean import clean, clean_multiline, parse_float, parse_int
 from pyromhacking.models import (
     Credit,
     Document,
     DownloadFile,
     Hack,
-    SECTION_MODELS,
     SearchResult,
     Translation,
     Utility,
@@ -104,13 +96,6 @@ def _row(rows: Dict[str, Tuple[str, Optional[str]]], *labels: str) -> str:
         if label in rows:
             return rows[label][0]
     return ""
-
-
-def _row_href(rows: Dict[str, Tuple[str, Optional[str]]], *labels: str) -> Optional[str]:
-    for label in labels:
-        if label in rows and rows[label][1]:
-            return rows[label][1]
-    return None
 
 
 def _authors(rows: Dict[str, Tuple[str, Optional[str]]], *labels: str) -> List[str]:

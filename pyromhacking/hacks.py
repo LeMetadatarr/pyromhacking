@@ -21,14 +21,7 @@ from pyromhacking._parse import (
     parse_listing,
     parse_search_results,
 )
-from pyromhacking.models import (
-    Document,
-    Hack,
-    SECTION_MODELS,
-    SearchResult,
-    Translation,
-    Utility,
-)
+from pyromhacking.models import Document, Hack, Translation, Utility
 
 SECTIONS = ("hacks", "translations", "utilities", "documents")
 
