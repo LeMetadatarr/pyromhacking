@@ -19,6 +19,9 @@ Quick start::
     hack = get_hack("1")
     print(hack.title, hack.game, hack.system)
 """
+import dataclasses
+from typing import Dict, Iterator, List, Optional, Set
+
 from pyromhacking._parse import NotFoundError
 from pyromhacking.hacks import (
     SECTIONS,
@@ -61,6 +64,39 @@ from pyromhacking.models import (
 )
 from pyromhacking.transport import reset_session, set_delay
 from pyromhacking.version import __version__
+
+
+def crawl(
+    sections: Optional[List[str]] = None,
+    *,
+    seen: Optional[Set[str]] = None,
+    max_entries: int = 0,
+) -> Iterator[Dict]:
+    if sections is None:
+        sections = ["hacks", "translations"]
+    if seen is None:
+        seen = set()
+    count = 0
+    for section in sections:
+        for entry in iter_entries(section):
+            entry_id = getattr(entry, "id", None) or getattr(entry, "url", None)
+            if entry_id is not None:
+                if entry_id in seen:
+                    continue
+                seen.add(entry_id)
+            try:
+                if hasattr(entry, "as_dict"):
+                    yield entry.as_dict
+                elif dataclasses.is_dataclass(entry):
+                    yield dataclasses.asdict(entry)
+                else:
+                    yield vars(entry)
+            except Exception:
+                continue
+            count += 1
+            if max_entries and count >= max_entries:
+                return
+
 
 __all__ = [
     # models
@@ -105,4 +141,6 @@ __all__ = [
     # errors / meta
     "NotFoundError",
     "__version__",
+    # crawl
+    "crawl",
 ]
